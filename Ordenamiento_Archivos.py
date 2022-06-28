@@ -3,7 +3,10 @@ import glob
 import shutil
 
 
-os.chdir("/home/Al3xmm14/Descargas")
+ruta = input("Ingresa la ruta donde quieres ordenar tus documentos")
+
+#os.chdir("/home/Al3xmm14/Descargas")
+os.chdir(ruta)
 def crearCarpetas():
     while(True):
         if os.path.exists("pdf") == True:
@@ -99,9 +102,8 @@ def organizar():
         shutil.move(i, "Comprimidos")    
     for i in (tar):
         shutil.move(i, "Comprimidos")
-    print("Hola Mundo")
 
-def OrdenamientoArchivos():
+def OrdenamientoDocumentos():
     os.chdir("/home/Al3xmm14/Descargas/Documentos")
     docx = glob.glob("*.docx")
     if os.path.exists("Word"):
@@ -110,8 +112,19 @@ def OrdenamientoArchivos():
         os.mkdir("Word")
     for i in (docx):
         shutil.move(i, "Word")
-    
+    os.chdir("/home/Al3xmm14/Descargas/Documentos")
+    txt = glob.glob("*.txt")
+
+    if os.path.exists("txt"):
+        pass
+    else:
+        os.mkdir("txt")
+
+    for i in (txt):
+        shutil.move(i, "txt")
     os.chdir("/home/Al3xmm14/Descargas")
+    
+    
     
 
     
@@ -121,5 +134,5 @@ def OrdenamientoArchivos():
 
 crearCarpetas()
 organizar()
-OrdenamientoArchivos()
+OrdenamientoDocumentos()
 
