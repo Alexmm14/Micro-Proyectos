@@ -1,48 +1,28 @@
 import os
 import glob
+from readline import parse_and_bind
 import shutil
 
 
-ruta = input("Ingresa la ruta donde quieres ordenar tus documentos")
+#ruta = input("Ingresa la ruta donde quieres ordenar tus documentos\n")
 
-#os.chdir("/home/Al3xmm14/Descargas")
-os.chdir(ruta)
+
+
+os.chdir("/home/Al3xmm14/Imágenes")
+#os.chdir(ruta)
+
+
+
 def crearCarpetas():
-    while(True):
-        if os.path.exists("pdf") == True:
-            pass
-        else:
-            os.mkdir("pdf")
-        if os.path.exists("Imagenes") == True:
-            pass
-        else:
-            os.mkdir("Imagenes")
+    listaCarpetas = ["pdf", "Imagenes", "Documentos", "Videos", "Programas", "Aplicaciones", "Comprimidos" ]
 
-        if os.path.exists("Documentos") == True:
-            pass
-        else:
-            os.mkdir("Documentos")
-    
-        if os.path.exists("Videos") == True:
-            pass
-        else:
-            os.mkdir("Videos")
-        
-        if os.path.exists("programas") == True:
-            pass
-        else:
-            os.mkdir("programas")
-        
-        if os.path.exists("RPM") == True:
-            pass
-        else:
-            os.mkdir("RPM")
-        if os.path.exists("Comprimidos"):
-            pass
-        else:
-            os.mkdir("Comprimidos")
-        break
-        
+    for i in listaCarpetas:
+        while(True):
+            if os.path.exists(i) == True:
+                pass
+            else:
+                os.mkdir(i)
+            break
     
 def organizar():
     #Fotos
@@ -124,7 +104,31 @@ def OrdenamientoDocumentos():
         shutil.move(i, "txt")
     os.chdir("/home/Al3xmm14/Descargas")
     
+def MENU ():
+    listaCarpetas = ["pdf", "Imagenes", "Documentos", "Videos", "Programas", "Aplicaciones", "Comprimidos" ]
+    print("                 MENU ORDENAMIENTO               \n\n")
+    print("1.- Agregar nombre de carpetas                                       \n")
+    print("2.- Ver carpetas que se crearan                                       \n")
+    print("3.- Colocar ruta de ordenamiento                                       \n")
     
+    opcion = int(input("Digite una opción: "))
+
+    if opcion == 1:
+        carpetas = input("Digite el nombre de la carpeta: ")
+        for i in listaCarpetas:
+            if i == carpetas:
+                print("Ese carpeta ya esta registrada...")
+                pass
+            else:  
+                listaCarpetas.append(carpetas)
+    elif opcion == 2:
+        for i in listaCarpetas:
+            print(i)
+    
+
+
+
+
     
 
     
@@ -135,4 +139,5 @@ def OrdenamientoDocumentos():
 crearCarpetas()
 organizar()
 OrdenamientoDocumentos()
+
 
