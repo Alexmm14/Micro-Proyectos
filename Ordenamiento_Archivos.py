@@ -1,6 +1,5 @@
 import os
 import glob
-from readline import parse_and_bind
 import shutil
 
 
@@ -106,38 +105,48 @@ def OrdenamientoDocumentos():
     
 def MENU ():
     listaCarpetas = ["pdf", "Imagenes", "Documentos", "Videos", "Programas", "Aplicaciones", "Comprimidos" ]
-    print("                 MENU ORDENAMIENTO               \n\n")
-    print("1.- Agregar nombre de carpetas                                       \n")
-    print("2.- Ver carpetas que se crearan                                       \n")
-    print("3.- Colocar ruta de ordenamiento                                       \n")
-    
-    opcion = int(input("Digite una opción: "))
+    a = True
+    while(a ==True):
 
-    if opcion == 1:
-        carpetas = input("Digite el nombre de la carpeta: ")
-        for i in listaCarpetas:
-            if i == carpetas:
-                print("Ese carpeta ya esta registrada...")
-                pass
-            else:  
+        print("                 MENU ORDENAMIENTO               \n\n")
+        print("1.- Agregar nombre de carpetas                                       \n")
+        print("2.- Ver carpetas que se crearan                                       \n")
+        print("3.- Colocar ruta de ordenamiento                                       \n")
+        print("4.- Salir                                       \n")
+    
+        opcion = int(input("Digite una opción: "))
+
+        if opcion == 1:
+            os.system ("clear")
+            carpetas = input("Digite el nombre de la carpeta: ")
+            if carpetas in listaCarpetas:
+                os.system ("clear")
+                print("Este nombre ya estra registrado")
+                os.system ("clear")
+            else:
+                os.system ("clear")  
                 listaCarpetas.append(carpetas)
-    elif opcion == 2:
-        for i in listaCarpetas:
-            print(i)
+                print("Se registro: ", carpetas)
+                input()
+                os.system ("clear")
+        elif opcion == 2:   
+            os.system ("clear")
+            print(listaCarpetas)
+            input()
+            os.system ("clear")
+        elif opcion == 3:
+            ruta = input("Colocar ruta de ordenamiento: \n")
+            os.chdir(ruta)
+        elif opcion == 4:
+            break
+        else:
+            print("Error, Opcion no valida")
+
+
+MENU()
     
-
-
-
-
-    
-
-    
-
-
-    
-
+"""
 crearCarpetas()
 organizar()
 OrdenamientoDocumentos()
-
-AA
+"""
